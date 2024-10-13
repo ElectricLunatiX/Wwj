@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переключение изображений с помощью JavaScript</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #666;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="toggleImage" src="image1.jpg" alt="Изображение">
+    <button id="toggleButton">Сменить изображение</button>
+
+    <script>
+        // Ссылки на изображения
+        const images = [
+            "image1.jpg",
+            "image2.jpg"
+        ];
+
+        // Текущий индекс изображения
+        let currentImageIndex = 0;
+
+        // Получаем элементы из DOM
+        const imageElement = document.getElementById('toggleImage');
+        const buttonElement = document.getElementById('toggleButton');
+
+        // Функция для переключения изображения
+        function toggleImage() {
+            // Меняем индекс на следующий, циклично
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            // Обновляем атрибут src изображения
+            imageElement.src = images[currentImageIndex];
+        }
+
+        // Добавляем обработчик события на кнопку
+        buttonElement.addEventListener('click', toggleImage);
+    </script>
+
+</body>
+</html>
